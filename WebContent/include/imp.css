@@ -1,0 +1,46 @@
+//personal area
+
+table.impstyletable {
+	border-width: 0px;
+	border-spacing: 0px;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: separate;
+	background-color: white;
+}
+table.impstyletable th {
+	border-width: 1px;
+	padding: 0px;
+	border-style: dotted;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius: ;
+}
+table.impstyletable td {
+	border-width: 1px;
+	padding: 0px;
+	border-style: dotted;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius: ;
+}
+
+.button {
+	background-color: #B2B299;
+	-moz-border-radius:7px;
+	cursor: pointer;
+	height: 20px;
+	width: 195px;
+	text-align: left;
+	font-size:12px;
+	}
+
+// Automatically insert a red asterisk after mandatory input fields:
+.mandatoryinput {
+} 
+
+.mandatoryinput:after {
+	content: "*";
+	vertical-align: top;
+	color: #FF0000;
+}

@@ -1,0 +1,170 @@
+== Allgemeine Testfälle ==
+
+Verfügbarkeitstest: (TC-001, benötigt: -)
+1.) Das System gemäß der QUICKSTART-Anleitung installieren
+2.) Beispieldaten gemäß QUICKSTART-Anleitung einspielen.
+3.) Öffnen Sie den Browser und versuchen Sie die Seite des Imp Aufzurufen.
+4.) Stellen sie sicher, dass die Seite korrekt angezeigt wird und keine Fehlerhaften Inhalte zu sehen
+sind.
+5.) Es darf kein Anmeldungsaufruf erscheinen.
+6.) Die Seite darf nur Angezeigt werden, wenn sie per VPN oder Uni-Intern aufgerufen wurde.
+
+== Grundlegende Funktionstests ==
+
+Aufgeben einer Anzeige: (TC-002, benötigt: TC-001)
+1.) Öffnen Sie im Browser den Imp.
+2.) Öffnen sie das Fenster zur Erstellung einer Anzeige.
+3.) Stellen sie sicher, dass sie die Folgenden Erstellmöglichkeiten zur Auswahl haben:
+- Art des Angebots(Diplomarbeit, Fachstudie..)
+- Zielgruppe (Bachelor/Master/Diplomstudenten)
+- Angabe von Kontaktdaten
+- Allgemeine Daten zum Projekt (Titel, Beschreibung, Beginn, keine Verfallsfrist - das wird vom System festgelegt)
+- Einstellmöglichkeit für die Sichtbarkeit der Interessenten („Nur Initiator“, „Initiator und Interessent“, Öffentlich")
+- Möglichkeit sowohl „Gesuche“ als auch "Angebote" zu erstellen
+4.) Erstellen Sie ein Angebot
+5.) Überprüfen Sie, ob Sie eine Bestätigungsmail bekommen haben.
+
+Durchsuchen der vorhandenen Anzeigen: (TC-003, benötigt: TC-001)
+1.) Öffnen Sie im Browser den Imp.
+2.) Stellen Sie sicher, dass es auf der Startseite eine Möglichkeit gibt, nach Anzeigen zu suchen.
+3.) Stellen sie sicher, dass sie die Folgenden 3 Filtermöglichkeiten zur Auswahl haben:
+- Institut
+- Art des Angebots (Diplomarbeit, Fachstudie...)
+- Freitextsuche über alle Felder
+
+Anzeige: (TC-004, benötigt: TC-002, TC-003)
+1.) Öffnen Sie im Browser den Imp.
+2.) Suchen sie ein Angebot.
+3.) Prüfen sie, ob das Angebot folgende Elemente enthält:
+- Titel der Anzeige
+- Initiator
+- Follower (Namentlich oder Anzahl)
+- Beschreibung (Freitext)
+- Beginn des Angebots, Verfallsdatum
+- Projekttyp
+- Betreuendes Institut
+
+Bekunden von Interesse für eine Anzeige: (TC-005, benötigt: TC-004)
+1.) Öffnen Sie im Browser den Imp.
+2.) Suchen Sie ein Angebot.
+3.) Tragen Sie sich als Interessant an.
+4.) Stellen Sie sicher, dass eine Meldung erscheint dass Sie ihre Interessensbekundung bestätigen müssen und dass die Anzahl der Interessenten noch nicht erhöht wurde.
+4.) Prüfen Sie, ob Sie eine E-Mail vom System bekommen haben, die einen Link zum Bestätigen der Interessensbekundung enthält.
+5.) Klicken Sie den Link in dieser E_Mail zum Bekunden des Interesses an.
+6.) Prüfen Sie, ob das System eine entsprechende Erfolgsmeldung anzeigt.
+4.) Überprüfen Sie ob die Anzahl der Follower erhöht wurde und ob Sie namentlich genannt werden. (Falls es keine öffentliche Anzeige ist, muss die Prüfung durch den Initiator der Anzeige erfolgen)
+
+Möglichkeit der Kontaktaufnahme: (TC-006, benötigt: TC-004)
+1.) Öffnen Sie im Browser den Imp.
+2.) Suchen sie ein Angebot.
+3.) Prüfen sie, ob sie die Kontaktdaten in dem Angebot abrufen können bzw ob Sie eine Nachricht an den Initiator senden können.
+
+== Moderation ==
+
+Moderator: (TC-007, benötigt: TC-001)
+1.) Öffnen Sie im Browser den Imp.
+2.) Melden sie sich als Moderator an.
+3.) Sie haben die Möglichkeit, Anzeigen freizuschalten, zu sperren, zu archivieren und archivierte
+Anzeigen wiederherzustellen.
+4.) Sie haben die Möglichkeit, Follower aus Angeboten zu entfernen.
+
+Angebot freischalten: (TC-008, benötigt TC-002, TC-007)
+1.) Öffnen Sie im Browser den Imp.
+2.) Melden sie sich als Moderator an.
+3.) Suchen Sie ein Angebot, dass noch nicht freigeschaltet ist.
+4.) Schalten Sie das Angebot frei.
+5.) Überprüfen Sie ob die Anzeige freigeschalten wurde.
+
+Angebot sperren: (TC-009, benötigt TC-008)
+1.) Öffnen Sie im Browser den Imp.
+2.) Melden sie sich als Moderator an.
+3.) Suchen Sie ein Angebot, dass freigeschaltet ist.
+4.) Sperren Sie das Angebot.
+5.) Überprüfen Sie ob die Anzeige gesperrt wurde.
+
+Angebot archivieren: (TC-010, benötigt TC-002, TC-007)
+1.) Öffnen Sie im Browser den Imp.
+2.) Melden sie sich als Moderator an.
+3.) Suchen Sie ein Angebot, dass noch nicht archiviert wurde.
+4.) Archivieren Sie das Angebot.
+5.) Überprüfen Sie ob die Anzeige archiviert wurde.
+
+Angebot wiederherstellen: (TC-011, benötigt TC-010)
+1.) Öffnen Sie im Browser den Imp.
+2.) Melden sie sich als Moderator an.
+3.) Suchen Sie ein Angebot, dass archiviert wurde.
+4.) Stellen Sie das Angebot wieder her.
+5.) Überprüfen Sie ob die Anzeige wiederhergestellt wurde.
+
+Follower löschen: (TC-012, benötigt TC-005, TC-007)
+1.) Öffnen Sie im Browser den Imp.
+2.) Melden sie sich als Moderator an.
+3.) Suchen Sie ein Angebot, bei dem mindestens ein Follower eingetragen ist.
+4.) Löschen Sie einen Follower.
+5.) Überprüfen Sie ob der Follower gelöscht wurde.
+
+== Administration ==
+
+Administrator: (TC-013, benötigt: TC-001)
+1.) Öffnen Sie im Browser den Imp.
+2.) Melden sie sich als Administrator an.
+3.) Sie haben die Möglichkeit, Anzeigen freizuschalten, zu sperren, zu archivieren und archivierte
+Anzeigen wiederherzustellen.
+4.) Sie haben die Möglichkeit, Follower aus Angeboten zu entfernen.
+5.) Sie können Imp in den moderierten Modus umschalten.
+6.) Sie können Moderatoren ernennen und entfernen.
+7.) Sie können Emailadressen zur Liste der erlauben Emailadressen hinzufügen und entfernen.
+
+Moderator ernennen: (TC-014, benötigt TC-013)
+1.) Öffnen Sie im Browser den Imp.
+2.) Melden sie sich als Administrator an.
+3.) Ernennen Sie einen Moderator.
+4.) Überprüfen Sie ob der Moderator hinzugefügt wurde.
+
+Moderator entfernen: (TC-015, benötigt TC-014)
+1.) Öffnen Sie im Browser den Imp.
+2.) Melden sie sich als Administrator an.
+3.) Entfernen Sie einen Moderator.
+4.) Überprüfen Sie ob der Moderator entfernt wurde.
+
+Emailadresse hinzufügen: (TC-016, benötigt TC-013)
+1.) Öffnen Sie im Browser den Imp.
+2.) Melden sie sich als Administrator an.
+3.) Fügen Sie eine Emailadresse hinzu.
+4.) Überprüfen Sie ob der Emailadresse hinzugefügt wurde.
+
+Emailadresse hinzufügen: (TC-017, benötigt TC-016)
+1.) Öffnen Sie im Browser den Imp.
+2.) Melden sie sich als Administrator an.
+3.) Löschen Sie eine Emailadresse.
+4.) Überprüfen Sie ob der Emailadresse entfernt wurde.
+
+== Initiator ==
+
+Initiator: (TC-018, benötigt TC-002)
+1.) Folgen Sie dem Bearbeitungslink in der Bestätigungsmail.
+2.) Prüfen Sie, ob Sie die komplette Auflistung ihrer Angebote sehen.
+3.) Wählen Sie eines Ihrer Angebote aus.
+4.) Überprüfen Sie, ob sie folgende Möglichkeiten haben bzw folgendes sehen:
+- Anzeige löschen
+- Anzeige bearbeiten (alles außer Sichtbarkeit der Follower)
+- Sichtbarkeit der Follower einschränken, jedoch nicht erweitern können
+
+Anzeige löschen: (TC-019, benötigt TC-018)
+1.) Folgen Sie dem Bearbeitungslink in der Bestätigungsmail.
+2.) Wählen Sie eines Ihrer Angebote aus.
+3.) Löschen Sie das Angebot.
+4.) Prüfen Sie, ob das Angebot gelöscht wurde.
+
+Anzeige bearbeiten: (TC-020, benötigt TC-018)
+1.) Folgen Sie dem Bearbeitungslink in der Bestätigungsmail.
+2.) Wählen Sie eines Ihrer Angebote aus.
+3.) Bearbeiten Sie die Anzeige.
+4.) Prüfen Sie, ob die Änderung übernommen wurde.
+
+Sichtbarkeit der Follower: (TC-021, benötigt TC-018)
+1.) Folgen Sie dem Bearbeitungslink in der Bestätigungsmail.
+2.) Wählen Sie eines Ihrer Angebote aus, dessen Sichtbarkeit „Initiator und Follower“ oder „Öffentlich“ ist.
+3.) Ändern Sie die Sichtbarkeit zu „Nur Initiator“.
+4.) Prüfen Sie, ob die Änderung übernommen wurde.
+5.) Prüfen Sie, ob Sie die Sichtbarkeit nicht mehr ändern können.

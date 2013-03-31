@@ -1,0 +1,59 @@
+IMP Version 2.6
+University of Stuttgart
+
+Thank you for downloading IMP. Please check (http://tba) for the latest official release.
+
+IMPORTANT: READ THIS FILE THOROUGHLY BEFORE USING IMP
+
+- Purpose
+
+IMP is a web-application which makes it easy for students who seeks theses, practica, 
+and other study-related projects to get in touch with potential coworkers and suppliers of 
+such projects. It supports both "want" and "have" advertisements of any parties, so it does 
+not matter which party initiates the request.
+
+The platform offers the option to search for advertisements using various filters. 
+Apart from contacting the ad initiators directly, users can also just state their interest 
+by "following" ads, similar to micro blogging services like Twitter.
+
+- History
+
+<section removed>
+
+- Hardware and software requirements
+
+	- Java JDK (EE)/ Open JDK (Version 6)
+	
+	- Apache Tomcat (Here: Version 6.0.35)
+	  	Download from: http://tomcat.apache.org/download-60.cgi	
+		NOTE: If using Windows the easiest way to install tomcat is to
+					download the windows installer package
+			
+- Installation instructions
+
+Please read the file INSTALL to get IMP up and running for production. 
+If you are interested in developing a new version of IMP please read the
+DEVELOP file.
+
+- Known problems
+
+- Version history
+
+Please read the file CHANGELOG for detailed information about current and prior versions of IMP.
+
+- Support and contact information
+
+This software is completely unsupported.
+
+- Legal information
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 3
+of the License, or any later version.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+Copyright (C) 2010-2013 by University of Stuttgart and the individual IMP contributors.

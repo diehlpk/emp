@@ -1,0 +1,61 @@
+<!-- 
+    IMP is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    IMP is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with IMP. If not, see <http://www.gnu.org/licenses/>.
+ -->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="generator" content="IMP (see footer for version details)" />
+<meta name="robots" content="INDEX,FOLLOW" />
+<meta name="reply-to" content="marktplatz@change.me" />
+
+<meta name="Content-language" content="de" />
+
+	<link href="./include/imp.css" rel="stylesheet" type="text/css" />
+	<link href="./DataTables-1.9.3/media/css/demo_page.css" rel="stylesheet" type="text/css" />
+	<link href="./DataTables-1.9.3/media/css/demo_table.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" language="javascript" src="./DataTables-1.9.3/media/js/jquery.js"></script>
+<script type="text/javascript" language="javascript" src="./DataTables-1.9.3/media/js/jquery.dataTables.js"></script>
+
+<!-- 
+	Für die englische Benutzeroberfläche muss man einfach folgenden Link tauschen:
+	"iDisplayLength" := default Elemente auf der Startseite
+	"aaSorting" := Spalte mit 0 beginnend, asc oder desc
+	"sUrl": "DataTables-1.9.3/media/language/en_GB.txt"
+	
+ -->
+<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$('#AnzeigenTable').dataTable({
+					"iDisplayLength": 25,
+					"aaSorting": [[ 5, "desc" ]],
+					"oLanguage": {
+		                "sUrl": "DataTables-1.9.3/media/language/de_DE.txt"
+		            }
+				});				
+			} );
+</script>
+
+</head>
+<body id="uid156">
+
+
+				
+<!-- end of copied Header -->
+
+
+

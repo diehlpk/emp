@@ -1,0 +1,56 @@
+Licenses:
+=========
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 3
+of the License, or any later version.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+Copyright (C) 2010-2013 by  University of Stuttgart, Germany
+
+
+Graphics:
+---------
+
+Icons taken from Fugue Icon Pack by Yusuke Kamiyamane. <http://p.yusukekamiyamane.com>
+Released under a Creative Commons Attribution 3.0 license. <http://creativecommons.org/licenses/by/3.0/>
+	
+Code:
+-----
+	
+JavaMail is released under the terms of the COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL), Version 1.0. <http://web.archive.org/web/20090125222439/http://www.sun.com/cddl/cddl.html>
+
+JavaServer Pages Standard Tag Library is released under the terms of the COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL), Version 1.0. <http://web.archive.org/web/20090125222439/http://www.sun.com/cddl/cddl.html>
+
+DataTables designed and created by SpryMedia © 2008-2013, DataTables is dual licensed under the GPL v2 license or a new BSD license (3-clause license) 
+
+TinyMCE is released under the terms of the LGPL License, Version 2.1. <http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html>
+
+Quartz Framework is released under the terms of the Apache License, Version 2.0 <http://www.apache.org/licenses/LICENSE-2.0.html>
+
+Log4J is released under the term of the the Apache License, Version 2.0 <http://www.apache.org/licenses/LICENSE-2.0.html>
+
+c3p0 is released under the terms of the LGPL License, Version 2.0. <http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html>
+
+cdi is released under the terms of the Apache License, Version 2.0 <http://www.apache.org/licenses/LICENSE-2.0.html>
+
+hsqldb is released under the terms of the new BSD license (3-clause license)
+
+Apache commons is released under the terms of the Apache License, Version 2.0 <http://www.apache.org/licenses/LICENSE-2.0.html>
+
+JavaEE is released under the terms of the Oracle Binary Code License Agreement for Java EE Technologies <http://download.oracle.com/otn-pub/java/licenses/OTN_JavaEE_Legacy_Binary-Code-License_30Jan2012.txt?AuthParam=1363817483_68256caa0400a5b4fc494ef8afa5c695>
+
+Resin > 3.0.9 is released under the terms of the GPL Licence, Version 2.0 <http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt> 
+
+ServletAPI is released under the terms of the SUN Binary Licence <http://easyeclipse.org/site/licenses/standards/sbin-1.0.html>
+
+SimpleCaptcha is released under the terms of the new BSD license (3-clause license)
+
+SLF4J is released under the terms of the MIT License
+
+=========
+
+Please note: Copies of all licenses are available as plain text file in the folder LICENSES.

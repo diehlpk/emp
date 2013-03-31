@@ -1,0 +1,31 @@
+IMP Version 1.1
+University of Stuttgart
+
+This document is intended for users who are interested in getting a simple installation of IMP  up and running quickly on your local machine as soon as possible. To achieve this, we will leave most defaults untouched and use an embedded database. If you are interested in deploying IMP in a production environment please refer to the full installation guide (in the file INSTALL) instead.
+
+
+= Step 1: Checking the environment
+
+Please make sure that your environment has the required software (especially a JVM and Apache Tomcat) installed. Since the application will try to create a new database named "localimpdb" in the root directory of your Apache Server, it is recommended to download the ZIP distribution of Tomcat and to unpack it in your local home directory and run it from there. If using a system-wide installation please make sure that the user under which Apache Tomcat is running has sufficient permissions to create the database in that directory.
+
+
+= Step 2: Deploying the WAR archive
+
+Copy over the file IMP.war to the webapps-Directory of your Tomcat installation. Make sure that Tomcat creates a new directory named IMP that should contain a bunch of files.
+
+Open the file "settings.cfg" which should be available in webapps/IMP/WEB-INF/classes.
+
+Edit the "settings.cfg". It is crucial that you enter the credentials of an e-mail account in there, which the IMP system will use. You should also adjust the allowed e-mail domain to the one of your institution. It is okay to leave all other settings untouched.
+
+Restart your Tomcat server, so that the IMP application can reread the new "settings.cfg" file.
+
+
+= Step 3: Creating the database
+
+Open your web browser and point it to the following URL: http://localhost:8080/IMP
+
+You should see the web-based setup page of IMP. Just click on the button "create database" which should create a new database for you. (Please note: If this step fails, the installer most likely does not have enough permissions - see Step 1)
+
+After creating the Schema you can also load some sample data into your new database.
+
+Congratulations! You have successfully installed IMP and can start using it. Have fun!

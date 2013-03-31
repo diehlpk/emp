@@ -1,0 +1,57 @@
+IMP Version 2.6
+University of Stuttgart
+
+
+1  Required Software:
+  1.1  	Java JDK (EE)/ Open JDK (Version 6)
+	
+  1.2  	Subversion (1.7.5)
+	   	Download from:	http://subversion.apache.org/packages.html
+			
+  1.3  	Apache Tomcat (Here: Version 6.0.35)
+	   	Download from:	http://tomcat.apache.org/download-60.cgi
+			
+		NOTE:	If using Windows the easiest way to install tomcat is to
+					download the windows installer package
+			
+  1.4  	Eclipse EE (3.7.2)
+		Download from:	http://www.eclipse.org/downloads/
+			
+  1.5	Subclipse
+		Subversion Eclipse PlugIn
+		Adding Subclipse with Eclipse:
+			Windows: 
+				Help -> Eclipse Marketplace -> Search for: Subclipse
+			Linux (Ubuntu):
+				Help -> Install new Software -> ADD (http://subclipse.tigris.org/update)
+				or check out: https://help.ubuntu.com/community/EclipseSubversion
+	
+	
+NOTE:	Apache Tomcat & Eclipse EE are both Java applications. 
+		=> Just unpack them in directory of your own choice
+			
+		After getting all these applications, one can develop, debug, update and test the whole project
+		by using eclipse.
+			
+2  Getting Started
+  2.1	- Get some information about jsp 
+		- Tutorial: http://jsptutorial.org/
+		- If necessary search for other tutorials concerning Java, Servlets, jsp, ...
+
+  2.2 	Checkout SVN Repository
+		- File -> New -> Other -> SVN -> Checkout Projects from SVN 
+		- Create a new repository location -> Url: https://oldlocation.change.me/svn/imp
+		- Type in username & password of your svn account
+	
+  2.3	Checkout Project from SVN (here Trunk)
+		- Window -> Open Perspective -> Other -> SVN Repository Exploring
+		- Select file "trunk" -> Mouse Right Click -> Checkout
+		- Window -> Open Perspective -> Other -> Java
+		- To start this Project: Select Project -> Run As -> Run on Server
+			
+  2.4	Create a Tomcat Server using Eclipse
+		- File -> New -> Other -> Server -> Server
+		- Choose Tomcat Version (Here Tomcat c6.0 Server) -> Next
+		- Optional: Choose Project that should be added to this server (Note: Don't choose more than one Project at a time)
+	
+			

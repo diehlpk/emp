@@ -1,0 +1,69 @@
+CHANGES IN VERSION 2.6 Final (18.12.2012), r614
+   * [???] TODO
+
+CHANGES IN VERSION 2.6 Beta (12.12.2012)
+   * [FIX] Wording by Uploading not an image (#963)
+   * [ADD] Deactivation of advertisments (#961, #965)
+   * [???] TODO
+
+CHANGES IN VERSION 2.5 Release Candidate 4 (10.12.2012)
+   * [FIX] Typos and spelling (#957, #958, #960)
+   * [FIX] Bug in the displayed amount of followers (#959)
+   * [FIX] Followers have to verify the E-Mail (#963)
+ 	
+CHANGES IN VERSION 2.5 Alpha2 (13.09.2012) 
+   * [FIX] Typos and spelling (#695)
+   * [FIX] Messages have no html-tags in mails (#758)
+   * [FIX] Values in Advertisment form are not reset after submitting wrong attributes (#610)
+
+CHANGES IN VERSION 2.5 Alpha1 (13.07.2012) r282
+   * [ADD] TinyMCE as Texteditor integrated (#498)
+   * [ADD] Advertisments are displayed over multiple sides (#733)
+   * [FIX] Changed default e-mail protocol from smtp to smtps (#715)
+   * [FIX] Minor adjustments in layout and spelling (#712, #708, #624)
+   * [FIX] Minor text adjustment in automated e-mails (#695)
+   * [FIX] Various code refactorings (#723, #213, #110)
+   * [FIX] Project start year is automatically computed based on the current year (#568)
+   * [FIX] Checkboxes for project type do not get resetted after searching (#608)
+   * [CHANGE] It is no more allowed to follow your own ads (#576)
+   * [CHANGE] Ad creator spelled with full name in e-mail (#577)
+   * [CHANGE] Project start instead of creation date is displayed on main page (#691, #616)
+   * [ADD] Version information in footer is now automatically created during build time (#513)
+   * [ADD] Build script distinguishes between test and production targets (#703)
+
+CHANGES IN VERSION 2.0 Release (12.11.2011) r157
+   * [ADD] Linebreaks are now shown in ad details. (#587)
+   * [ADD] Mandatory fields can be easier distinguished from optional fields (#589)
+   * [ADD] E-Mail addresses are now shown as mailto-links (#603)
+   * [ADD] Followers are warned about privacy when expressing their interest for ads where followers are publically visible (#609)
+   * [FIX] Removed minor stylistic / typo errors (#602, #604)
+   * [FIX] Removed obsolete tooltips (#590)
+   * [FIX] Changing user data should work again (#583)
+   * [FIX] Creating new ads works again (#574)
+   * [FIX] Creation date is no more updated when changing ad details (#383)
+   * [FIX] Target audience could get lost in certain cases (#526)
+   * [CHANGE] Simultaneos SSL and non-SSL operation now allowed (#520)
+   * [CHANGE] All-new quickstart guide (#36)
+
+CHANGES IN VERSION 1.1 Alpha (24.08.2011) r74 
+   * [ADD] HSQLDB is now supported as well (#36)
+   * [ADD] More documentation like Readme, Changelog, License etc. is available (#36, #68, #126)
+   * [ADD] Number of followers is now visible in advertisement details (#332)
+   * [ADD] Both "want" and "have" advertisements are now supported. (#331)
+   * [ADD] Included Servlet-API in distribution (#115)
+   * [ADD] Made database name and hostname configurable through settings.cfg (#128)
+   * [ADD] Included rudimentary Ant build script (#108)
+   * [ADD] Body and subject of system mail is now editable through settings.cfg (#14)
+   * [ADD] New installer / setup page assists with creating the database and is automatically invoked on the first access (#121)
+   * [FIX] Improved spelling in various system messages (#53)
+   * [FIX] Users can not follow the same advertisement twice anymore (#319)
+   * [FIX] Parameters in the e-mail texts are shown properly again (#334)
+   * [FIX] Prevented displaying an empty start page due to a broken link 
+   * [FIX] Changed to Prepared Statements in order to eliminate SQL injections (#112)
+   * [CHANGE] Split apart SQL scripts for creating schema and adding sample data (#135, #122)
+   * [CHANGE] Database connection stays alive using Singleton pattern (#132)
+   * [CHANGE] All SQL statements conform to ANSI-99 (#124) 
+   * [CHANGE] Servlet-api is now bundled with the application (#27, #29)
+
+CHANGES IN VERSION 1.0 (23.11.2010) r1
+   * Initial release

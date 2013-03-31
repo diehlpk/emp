@@ -1,0 +1,29 @@
+IMP Version 2.6
+University of Stuttgart
+
+1 Required Software:
+ - Running Apache Tomcat
+
+2 Build IMP 
+
+2.1 Checkout Source
+ - Check out IMP Source from your prefered repository
+ - Use the Terminal/Console to cd into Base directory of your checkout
+
+2.2 Select the prefered preconfiguration
+ - Values:
+      Usage:
+      		ant {new|last|ref|prod}
+      		
+      		new: 	Builds a war file for a new installation
+      		last: 	checks out last version of svn und builds an update war file without setup.jsp
+      		ref: 	checks out a specific ref version and builds an update war file without setup.jsp
+      		prod: 	builds an pruductive system with different settings file
+
+2.3 Build desired version
+ - Type in 'ant new' for a new installation
+
+3 Deploy on Server
+ - Deploy build/target/IMP.war on your Tomcat Server
+
+
