@@ -19,10 +19,12 @@
 		<pathelement location="${thirdparty.lib.dir}/quartz-2.1.6.jar" />
 	</path>
 
-	
-	<!-- Build for a test System -->	
-	<target name="prod" description="builds a deployable archive of the beta application" depends="version">
-		<delete file="build/compile/settings.cfg"/>
+	<!-- Check if git is available -->
+	<available file=".git" type="dir" property="git.present" />
+
+	<!-- Build for a test System -->
+	<target name="prod" description="builds a deployable archive of the beta application" depends="versionHead">
+		<delete file="build/compile/settings.cfg" />
 		<copy file="src/settingsProd.cfg" tofile="build/compile/settings.cfg" />
 		<war destfile="${default.target.dir}/ProdIMP.war" webxml="WebContent/WEB-INF/web.xml">
 			<fileset dir="WebContent">
@@ -42,11 +44,39 @@
 			<classes dir="${classes.dir}" />
 		</war>
 	</target>
-		
-	
+
+	<!-- Build from last SVN Revision -->
+	<target name="last" description="builds a deployable archive of the application" depends="gitup">
+		<delete file="build/compile/settings.cfg" />
+		<copy file="src/settingsNew.cfg" tofile="build/compile/settings.cfg" />
+		<war destfile="${default.target.dir}/IMP.war" webxml="WebContent/WEB-INF/web.xml">
+			<fileset dir="WebContent">
+				<include name="**/*.jsp" />
+				<include name="**/*.php" />
+				<include name="**/*.png" />
+				<include name="**/*.gif" />
+				<include name="**/*.jpg" />
+				<include name="**/*.htm*" />
+				<include name="**/*.css*" />
+				<include name="include/**" />
+				<include name="**/*.js" />
+				<include name="**/de_DE.txt" />
+			</fileset>
+			<lib dir="${thirdparty.lib.dir}" />
+			<classes dir="${classes.dir}" />
+		</war>
+	</target>
+
+	<target name="gitup">
+		<exec executable="git">
+			<arg value="pull" />
+		</exec>
+		<antcall target="version" />
+	</target>
+
 	<!-- Build from specific SVN Revision -->
-	<target name="ref" description="builds a deployable archive of the application in a spectific revision" depends="svnref">
-		<delete file="build/compile/settings.cfg"/>
+	<target name="ref" description="builds a deployable archive of the application in a spectific revision" depends="gitref">
+		<delete file="build/compile/settings.cfg" />
 		<copy file="src/settings.cfg" tofile="build/compile/settings.cfg" />
 		<war destfile="${default.target.dir}/RefIMP.war" webxml="WebContent/WEB-INF/web.xml">
 			<fileset dir="WebContent">
@@ -64,50 +94,30 @@
 			<lib dir="${thirdparty.lib.dir}" />
 			<classes dir="${classes.dir}" />
 		</war>
-	</target>	
-	
-	<target name="svnref">
-		<input addproperty="refnr">
-		    What Revision do u want to use?
-		</input>
-	    <exec executable="svn" >
-	    	<arg line=" up -r${refnr}" />
-	    </exec>
-    	<antcall target="version" />
 	</target>
 
-	<!-- Build from last SVN Revision -->
-	<target name="last" description="builds a deployable archive of the application" depends="svnup">
-		<delete file="build/compile/settings.cfg"/>
-		<copy file="src/settingsNew.cfg" tofile="build/compile/settings.cfg" />
-		<war destfile="${default.target.dir}/IMP.war" webxml="WebContent/WEB-INF/web.xml">
-			<fileset dir="WebContent">
-				<include name="**/*.jsp" />
-				<include name="**/*.php" />
-				<include name="**/*.png" />
-				<include name="**/*.gif" />
-				<include name="**/*.jpg" />
-				<include name="**/*.htm*" />
-				<include name="**/*.css*" />
-				<include name="include/**" />
-				<include name="**/*.js" />
-				<include name="**/de_DE.txt" />
-			</fileset>
-			<lib dir="${thirdparty.lib.dir}" />
-			<classes dir="${classes.dir}" />
-		</war>
+	<target name="gitref">
+		<input addproperty="refnr">
+			    What Revision do you want to use?
+			</input>
+		<exec executable="git">
+			<arg line=" checkout ${refnr}" />
+		</exec>
+		<!-- Update the revision and version in Tail.html -->
+		<delete file="WebContent/include/Tail.html" />
+		<copy file="WebContent/include/Tail.tmp" tofile="WebContent/include/Tail.html" />
+		<tstamp>
+			<format property="date" pattern="d.MMMM.yyyy" locale="de,DE" />
+		</tstamp>
+		<tstamp prefix="start" />
+		<replace file="WebContent/include/Tail.html" token="DATE" value="${date}" />
+		<replace file="WebContent/include/Tail.html" token="REF" value="${refnr}" />
+		<antcall target="compile" />
 	</target>
-	
-	<target name="svnup">
-	    <exec executable="svn" >
-	    	<arg value="up"/>
-	    </exec>	
-    	<antcall target="version" />
-	</target>
-	
+
 	<!-- Normal Build from Filesystem for a new server-->
-	<target name="new" description="builds a deployable archive of the application" depends="version">
-		<delete file="build/compile/settings.cfg"/>
+	<target name="new" description="builds a deployable archive of the application" depends="versionHead">
+		<delete file="build/compile/settings.cfg" />
 		<copy file="src/settingsNew.cfg" tofile="build/compile/settings.cfg" />
 		<war destfile="${default.target.dir}/IMP.war" webxml="WebContent/WEB-INF/web.xml">
 			<fileset dir="WebContent">
@@ -126,38 +136,37 @@
 			<classes dir="${classes.dir}" />
 		</war>
 	</target>
-	
+
 	<target name="compile" depends="init">
 		<javac destdir="${classes.dir}" srcdir="${source.dir}" classpathref="build.classpath" includeantruntime="false" debug="true" debuglevel="source,lines,vars" encoding="UTF-8" />
 		<copy todir="${classes.dir}">
 			<fileset dir="${source.dir}">
-				<include name="initialize.sql"/>
-				<include name="insert_sample_data.sql"/>
-				<include name="settings.cfg"/>
-				<include name="messages.properties"/>
+				<include name="initialize.sql" />
+				<include name="insert_sample_data.sql" />
+				<include name="settings.cfg" />
+				<include name="messages.properties" />
 			</fileset>
 		</copy>
 	</target>
 
-	<!-- Datum, Name und Ref in die Tail.html eintragen -->
-	<target name="version">
+	<!-- Update the git revision and the date in Tail.html -->
+	<target name="versionHead">
 		<delete file="WebContent/include/Tail.html" />
 		<copy file="WebContent/include/Tail.tmp" tofile="WebContent/include/Tail.html" />
-		<input addproperty="version" defaultvalue="2.6">
-			    Version of IMP? Just Press Enter to use 2.6.
-		</input>
 		<tstamp>
-		  <format property="date" pattern="d.MMMM.yyyy" locale="de,DE"/>
+			<format property="date" pattern="d.MMMM.yyyy" locale="de,DE" />
 		</tstamp>
-		<exec executable="bash" outputproperty="ref">
-			<arg value="-c"/>
-			<arg line="'svn info | grep Revision'" />
+		<!-- Get the git revision -->
+		<exec executable="git" outputproperty="git.revision" failifexecutionfails="false" errorproperty="">
+			<arg value="describe" />
+			<arg value="--tags" />
+			<arg value="--always" />
+			<arg value="HEAD" />
 		</exec>
-		<tstamp prefix="start"/>
-    	<replace file="WebContent/include/Tail.html" token="VERSION" value="${version}"/>
-		<replace file="WebContent/include/Tail.html" token="DATE" value="${date}"/>
-		<replace file="WebContent/include/Tail.html" token="REF" value="${ref}"/>
-    	<antcall target="compile" />
+		<tstamp prefix="start" />
+		<replace file="WebContent/include/Tail.html" token="DATE" value="${date}" />
+		<replace file="WebContent/include/Tail.html" token="REF" value="${git.revision}" />
+		<antcall target="compile" />
 	</target>
 
 	<!-- Needed stuff -->
@@ -170,16 +179,16 @@
 	<target name="clean">
 		<delete dir="${default.build.dir}" />
 	</target>
-	
+
 	<!-- Usage Block -->
 	<target name="echo">
 		<echo>Usage:
 		ant {new|last|ref|prod}
 		
 		new: 	Builds a war file for a new installation
-		last: 	checks out last version of svn und builds an update war file without setup.jsp
-		ref: 	checks out a specific ref version and builds an update war file without setup.jsp
-		prod: 	builds an pruductive system with different settings file</echo>
+		last: 	checks out last version and builds an update war file without setup.jsp
+		ref: 	checks out a revision and builds an updated war file without setup.jsp
+		prod: 	builds an productive system with different settings file</echo>
 	</target>
 
 </project>
