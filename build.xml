@@ -71,7 +71,7 @@
 		<exec executable="git">
 			<arg value="pull" />
 		</exec>
-		<antcall target="version" />
+		<antcall target="versionHead" />
 	</target>
 
 	<!-- Build from specific SVN Revision -->
