@@ -33,9 +33,11 @@ public class Mailer {
 	private String user = controller.Settings.getProperty("mailuser")[0];
 	private String password = controller.Settings.getProperty("mailpassword")[0];
 	private String host = controller.Settings.getProperty("mailhost")[0];
-	private String useLocalhost = Settings.getProperty("uselocalhost")[0];
+	private String useTTLS = Settings.getProperty("useTTLS")[0];
 	private String adminmail = Settings.getProperty("adminmail")[0];
-	private int PORT = Integer.parseInt(Settings.getProperty("mailport")[0]); //995 usally secure
+	private int PORT = Integer.parseInt(Settings.getProperty("mailport")[0]); // 995
+																				// usally
+																				// secure
 
 	private Properties props = null;
 
@@ -48,8 +50,10 @@ public class Mailer {
 		if (props == null) {
 			props = new Properties();
 
-			if (useLocalhost.equals("false")) {
+			if (useTTLS.equals("true")) {
 				props.put("mail.smtp.starttls.enable", "true");
+			} else {
+				props.put("mail.smtp.starttls.enable", "false");
 			}
 
 		}
@@ -73,10 +77,11 @@ public class Mailer {
 
 		Transport transport = session.getTransport("smtp");
 
-		if (useLocalhost.equals("false")) {
-			transport.connect(host, PORT, user, password);
-		} else {
+		if (host.equals("localhost")) {
 			transport.connect();
+		} else {
+
+			transport.connect(host, PORT, user, password);
 		}
 
 		transport.sendMessage(message, message.getAllRecipients());
@@ -112,11 +117,12 @@ public class Mailer {
 
 		// Stuff to send the email
 		Session session = prepareMessage();
-		
+
 		MimeMessage message = new MimeMessage(session);
 
-		message.setSubject(Messages.getString("createSubject").replaceAll(
-				"%title%", title), "UTF-8");
+		message.setSubject(
+				Messages.getString("createSubject")
+						.replaceAll("%title%", title), "UTF-8");
 		message.setText(text, "UTF-8");
 		Address address = new InternetAddress(from);
 		message.setFrom(address);
@@ -151,8 +157,9 @@ public class Mailer {
 		Session session = prepareMessage();
 		MimeMessage message = new MimeMessage(session);
 
-		message.setSubject(Messages.getString("activateSubject").replaceAll(
-				"%title%", title), "UTF-8");
+		message.setSubject(
+				Messages.getString("activateSubject").replaceAll("%title%",
+						title), "UTF-8");
 		message.setText(text, "UTF-8");
 		Address address = new InternetAddress(from);
 		message.setFrom(address);
@@ -194,8 +201,9 @@ public class Mailer {
 		Session session = prepareMessage();
 		MimeMessage message = new MimeMessage(session);
 
-		message.setSubject(Messages.getString("followerSubject").replaceAll(
-				"%title%", title), "UTF-8");
+		message.setSubject(
+				Messages.getString("followerSubject").replaceAll("%title%",
+						title), "UTF-8");
 		message.setText(text, "UTF-8");
 		Address address = new InternetAddress(from);
 		message.setFrom(address);
@@ -236,8 +244,9 @@ public class Mailer {
 		Session session = prepareMessage();
 		MimeMessage message = new MimeMessage(session);
 
-		message.setSubject(Messages.getString("deleteSubject").replaceAll(
-				"%title%", title), "UTF-8");
+		message.setSubject(
+				Messages.getString("deleteSubject")
+						.replaceAll("%title%", title), "UTF-8");
 		message.setText(text, "UTF-8");
 		Address address = new InternetAddress(from);
 		message.setFrom(address);
@@ -279,8 +288,9 @@ public class Mailer {
 		Session session = prepareMessage();
 		MimeMessage message = new MimeMessage(session);
 
-		message.setSubject(Messages.getString("newFollowerSubject").replaceAll(
-				"%title%", title), "UTF-8");
+		message.setSubject(
+				Messages.getString("newFollowerSubject").replaceAll("%title%",
+						title), "UTF-8");
 		message.setText(text, "UTF-8");
 		Address address = new InternetAddress(from);
 		message.setFrom(address);
@@ -307,8 +317,8 @@ public class Mailer {
 	 * @throws MessagingException
 	 */
 	public void sendCustomerMessageInitiator(String initiatorEmailAdress,
-			String replyEmailAdress, String customerMessage, String title, String initiatorName)
-			throws MessagingException {
+			String replyEmailAdress, String customerMessage, String title,
+			String initiatorName) throws MessagingException {
 
 		String text = Messages.getString("customerMessageText").replaceAll(
 				"%email%", replyEmailAdress);
@@ -316,19 +326,19 @@ public class Mailer {
 		text = text.replaceAll("%adminmail%", adminmail);
 		text = text.replaceAll("%advertiser%", initiatorName);
 		text = text.replaceAll("%title%", title);
-		
 
 		// Stuff to send the email
 		Session session = prepareMessage();
 		MimeMessage message = new MimeMessage(session);
 
-		message.setSubject(Messages
-				.getString("customerMessageInitiatorSubject").replaceAll(
-						"%title%", title), "UTF-8");
+		message.setSubject(
+				Messages.getString("customerMessageInitiatorSubject")
+						.replaceAll("%title%", title), "UTF-8");
 		message.setText(text, "UTF-8");
 		Address address = new InternetAddress(from);
 		message.setFrom(address);
-		Address toAddress = new InternetAddress(parseTestAddesses(initiatorEmailAdress));
+		Address toAddress = new InternetAddress(
+				parseTestAddesses(initiatorEmailAdress));
 		message.addRecipient(Message.RecipientType.TO, toAddress);
 		Address replyAddress = new InternetAddress(
 				parseTestAddesses(replyEmailAdress));
@@ -354,11 +364,11 @@ public class Mailer {
 	 * @throws MessagingException
 	 */
 	public void sendCustomerMessageFollower(String toAdress,
-			String replyAdress, String customerMessage, String title, String follower, String initiatorName)
-			throws MessagingException {
+			String replyAdress, String customerMessage, String title,
+			String follower, String initiatorName) throws MessagingException {
 
-		String text = Messages.getString("customerMessageFollowerText").replaceAll(
-				"%email%", replyAdress);
+		String text = Messages.getString("customerMessageFollowerText")
+				.replaceAll("%email%", replyAdress);
 		text = text.replaceAll("%title%", title);
 		text = text.replaceAll("%follower%", follower);
 		text = text.replaceAll("%text%", customerMessage);
@@ -368,8 +378,8 @@ public class Mailer {
 		Session session = prepareMessage();
 		MimeMessage message = new MimeMessage(session);
 
-		String subjectText = Messages.getString("customerMessageFollowerSubject")
-				.replaceAll("%title%", title);
+		String subjectText = Messages.getString(
+				"customerMessageFollowerSubject").replaceAll("%title%", title);
 		subjectText = subjectText.replace("%initiatorName%", initiatorName);
 		message.setSubject(subjectText, "UTF-8");
 		message.setText(text, "UTF-8");
@@ -382,7 +392,7 @@ public class Mailer {
 		message.setReplyTo(new Address[] { replyAddress });
 		sendMessage(message, session);
 	}
-	
+
 	/**
 	 * Sends a message to the administrator
 	 * 
@@ -394,14 +404,13 @@ public class Mailer {
 	 * 
 	 * @throws MessagingException
 	 */
-	public void sendCustomerMessageAdmin(String replyEmailAdress, String customerMessage)
-			throws MessagingException {
+	public void sendCustomerMessageAdmin(String replyEmailAdress,
+			String customerMessage) throws MessagingException {
 
-		String text = Messages.getString("customerMessageAdminText").replaceAll(
-				"%email%", replyEmailAdress);
+		String text = Messages.getString("customerMessageAdminText")
+				.replaceAll("%email%", replyEmailAdress);
 		text = text.replaceAll("%text%", customerMessage);
 		text = text.replaceAll("%adminmail%", adminmail);
-		
 
 		// Stuff to send the email
 		Session session = prepareMessage();
@@ -409,11 +418,12 @@ public class Mailer {
 
 		String subjectText = Messages.getString("customerMessageAdminSubject");
 		message.setSubject(subjectText, "UTF-8");
-		
+
 		message.setText(text, "UTF-8");
 		Address address = new InternetAddress(from);
 		message.setFrom(address);
-		Address toAddress = new InternetAddress(parseTestAddesses(controller.Settings.getProperty("adminmail")[0]));
+		Address toAddress = new InternetAddress(
+				parseTestAddesses(controller.Settings.getProperty("adminmail")[0]));
 		message.addRecipient(Message.RecipientType.TO, toAddress);
 		Address replyAddress = new InternetAddress(
 				parseTestAddesses(replyEmailAdress));
@@ -460,13 +470,14 @@ public class Mailer {
 		message.addRecipient(Message.RecipientType.TO, toAddress);
 		sendMessage(message, session);
 	}
-	
-	public void sendDeleteNotification(String delString, String toAdress, String title, String advertiser)
-			throws MessagingException {
+
+	public void sendDeleteNotification(String delString, String toAdress,
+			String title, String advertiser) throws MessagingException {
 
 		// The text of the email is set here.
 		// It will soon contain a short description and the deleted description.
-		String text = Messages.getString("deleteText").replaceAll("%title%", title);
+		String text = Messages.getString("deleteText").replaceAll("%title%",
+				title);
 		text = text.replaceAll("%description%", delString);
 		text = text.replaceAll("%advertiser%", advertiser);
 		text = text.replaceAll("%adminmail%", adminmail);
@@ -475,7 +486,9 @@ public class Mailer {
 		Session session = prepareMessage();
 		MimeMessage message = new MimeMessage(session);
 
-		message.setSubject(Messages.getString("deleteSubject").replaceAll("%title%", title), "UTF-8");
+		message.setSubject(
+				Messages.getString("deleteSubject")
+						.replaceAll("%title%", title), "UTF-8");
 		message.setText(text, "UTF-8");
 		Address address = new InternetAddress(from);
 		message.setFrom(address);
@@ -483,7 +496,7 @@ public class Mailer {
 		message.addRecipient(Message.RecipientType.TO, toAddress);
 		sendMessage(message, session);
 	}
-	
+
 	/**
 	 * 
 	 * @param toAdress
@@ -494,29 +507,31 @@ public class Mailer {
 	 * @param url
 	 * @throws MessagingException
 	 */
-	public void sendDeactivationDeadlineMessage (String toAdress, String initiatorName, String title, String deadline, String date, String url) throws MessagingException
-	{
+	public void sendDeactivationDeadlineMessage(String toAdress,
+			String initiatorName, String title, String deadline, String date,
+			String url) throws MessagingException {
 		String messageSubject = Messages.getString("deactivateDeadlineSubject");
 		messageSubject = messageSubject.replaceAll("%title%", title);
-		
+
 		String messageText = Messages.getString("deactivateDeadlineText");
 		messageText = messageText.replaceAll("%initiator%", initiatorName);
 		messageText = messageText.replaceAll("%deadline%", deadline);
 		messageText = messageText.replaceAll("%date%", date);
-		messageText = messageText.replaceAll("%personalarea%", "<a href=\"" + url +"\">" + url + "</a>");
+		messageText = messageText.replaceAll("%personalarea%", "<a href=\""
+				+ url + "\">" + url + "</a>");
 		messageText = messageText.replaceAll("\\n", "<br>");
-		
+
 		Session session = prepareMessage();
 		MimeMessage message = new MimeMessage(session);
 		message.setSubject(messageSubject, "UTF-8");
 		message.setContent(messageText, "text/html; charset=utf-8");
 		message.saveChanges();
-		
+
 		Address address = new InternetAddress(from);
 		message.setFrom(address);
 		Address toAddress = new InternetAddress(toAdress);
 		message.addRecipient(Message.RecipientType.TO, toAddress);
-		
+
 		sendMessage(message, session);
 	}
 
@@ -528,30 +543,32 @@ public class Mailer {
 	 * @param url
 	 * @throws MessagingException
 	 */
-	public void sendDeactivatedAdAutomatic (String toAdress, String initiatorName, String title, String url) throws MessagingException
-	{
-		String messageSubject = Messages.getString("deactivatedAdAutomaticSubject");
+	public void sendDeactivatedAdAutomatic(String toAdress,
+			String initiatorName, String title, String url)
+			throws MessagingException {
+		String messageSubject = Messages
+				.getString("deactivatedAdAutomaticSubject");
 		messageSubject = messageSubject.replaceAll("%title%", title);
-		
+
 		String messageText = Messages.getString("deactivatedAdAutomaticText");
 		messageText = messageText.replaceAll("%initiator%", initiatorName);
 		messageText = messageText.replaceAll("%personalarea%", url);
 		messageText = messageText.replaceAll("\\n", "<br/>");
-		
+
 		Session session = prepareMessage();
 		MimeMessage message = new MimeMessage(session);
 		message.setSubject(messageSubject, "UTF-8");
 		message.setContent(messageText, "text/html; charset=utf-8");
 		message.saveChanges();
-		
+
 		Address address = new InternetAddress(from);
 		message.setFrom(address);
 		Address toAddress = new InternetAddress(toAdress);
 		message.addRecipient(Message.RecipientType.TO, toAddress);
-		
+
 		sendMessage(message, session);
 	}
-	
+
 	private String parseTestAddesses(String address) {
 		if (address.endsWith("@imp.test.change.me")) {
 			return "somestudi@studi.change.me";
