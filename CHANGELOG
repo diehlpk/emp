@@ -1,10 +1,10 @@
-CHANGES IN VERSION 2.6 Final (18.12.2012), r614
-   * [???] TODO
+CHANGES IN VERSION 2.6 Final (12.06.2014)
+   * [CHANGE] Migration to git (#1)
+   * [FIX] Options in mail configuration (#2,#3)	
 
 CHANGES IN VERSION 2.6 Beta (12.12.2012)
    * [FIX] Wording by Uploading not an image (#963)
    * [ADD] Deactivation of advertisments (#961, #965)
-   * [???] TODO
 
 CHANGES IN VERSION 2.5 Release Candidate 4 (10.12.2012)
    * [FIX] Typos and spelling (#957, #958, #960)
